@@ -1,15 +1,37 @@
 package CS2020.assignment1.game;
+import java.util.Random;
 
-public class BattleShip extends AbstractBattleShip{
+public class BattleShip extends AbstractBattleShip {
 
     public BattleShip(String name, String shipOrientation){
-        String [] names = {"vertical", "horizontal"};
-        int randomNum = (int)(Math.random() * 2);
-        if (randomNum < 1) {
-            name = names[0];
 
-        } else {
-            name = names[1];
-        }
+        this.name = name;
+        this.shipOrientation = shipOrientation;
+
     }
+
+
+    public static void main(String[]args){
+        
+    }
+    public String getName(){
+        return name;
+    }
+    
+    public String getShipOrientation(){
+        return shipOrientation;
+    }
+    public int getHits() {
+        return hits;
+    }
+    
+
+    public int[][] getShipCoordinates() {
+        return shipCoordinates;
+    }
+
+    //public void setHits(int numberOfHits) {}
+    //public void setShipCoordinates(int [][] coordinates) {}
+    //public boolean checkAttack(){}
+
 }
