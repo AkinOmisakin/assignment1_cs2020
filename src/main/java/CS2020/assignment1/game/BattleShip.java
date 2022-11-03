@@ -1,18 +1,21 @@
 package CS2020.assignment1.game;
-import java.util.Arrays;
+
 import java.util.Random;
-import java.util.Scanner;
+
 
 public class BattleShip extends AbstractBattleShip {
-    int row;
-    int column;
-
-
+    
     public BattleShip(String name) {
         this.name = name;
-
-        this.shipOrientation = shipOrientation;
-
+        setShipOrientation();
+    }
+    public String getName(){//done
+        return name;
+    }
+    public String getShipOrientation(){
+        return shipOrientation;
+    }
+    public void setShipOrientation(){
 
         int Rand = new Random().nextInt(2);//generate random number between 0-1
         if (Rand < 1){
@@ -21,12 +24,6 @@ public class BattleShip extends AbstractBattleShip {
             shipOrientation="horizontal";
         }
 
-    }
-    public String getName(){//done
-        return name;
-    }
-    public String getShipOrientation(){
-        return shipOrientation;
     }
 
     public int getHits() {
@@ -40,7 +37,8 @@ public class BattleShip extends AbstractBattleShip {
 
     
     public void setHits(int numberOfHits) {
-       this.hits = numberOfHits;
+        this.hits = 0;
+        this.hits += numberOfHits;
     }
 
     public void setShipCoordinates(int [][] coordinates) {
@@ -49,30 +47,29 @@ public class BattleShip extends AbstractBattleShip {
     }
 
     public boolean checkAttack(int row,int column){
-        this.row = row;
-        this.column = column;
-        boolean isAlive = true;
+        boolean alive = false;
         int i,j;
-        for(i=0;i<shipCoordinates.length;i++){
+        for (i=0;i<shipCoordinates.length;i++){
             for(j=0;j<shipCoordinates[i].length;j++){
-                if(shipCoordinates[i][j] != row || shipCoordinates[i][j] != column){
-                    isAlive = false;
-                } 
-                else if (this.hits < 3) {
-                    isAlive =true;
-                    this.hits++;
+                if (shipCoordinates[0][0]==row && shipCoordinates[0][1]==column){
+                    if (this.hits < 3){
+                        alive = true;
+                        this.hits++;
+                        return alive;
+                    } else {
+
+                        alive = false;
+                        
+                    }
                 } else {
                     
-                    isAlive = false;
+                    return alive;
                 }
-                
             }
+            
         }
-        return isAlive;
+        return alive;
     }
         
 }
-
-   /* */
-
 
