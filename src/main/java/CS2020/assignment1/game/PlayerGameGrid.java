@@ -9,6 +9,7 @@ public class PlayerGameGrid extends GameGrid {
     }
 
     public void printGrid(){
+        // prints the grid in rows rather than list
         for(int i = 0;i < gameGrid.length;i++){
             for(int j=0; j<gameGrid[i].length;j++){
                 System.out.print(gameGrid[i][j] + " "); // prints everything

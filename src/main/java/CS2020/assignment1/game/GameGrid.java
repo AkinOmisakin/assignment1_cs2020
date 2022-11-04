@@ -5,18 +5,18 @@ public class GameGrid extends AbstractGameGrid{
 
     public GameGrid(int width, int height, int numberOfShips){
         gameGrid = new String[width][height];
-        initializeGrid();//2_1
+        initializeGrid();
 
         this.ships = new AbstractBattleShip[numberOfShips];//initialize number of shops
-        generateShips(numberOfShips);
+        generateShips(numberOfShips);//ships created
 
-        for(int i = 0; i < ships.length; i++){
+        for(int i = 0; i < ships.length; i++){//all ships placed on grid
             placeShip(ships[i]);
         }
         
     }
 
-    public void initializeGrid(){
+    public void initializeGrid(){//creates grid
         for(int i= 0;i<gameGrid.length;i++){
             for(int j = 0;j<gameGrid[i].length;j++){
                 gameGrid[i][j] = ".";
@@ -24,16 +24,17 @@ public class GameGrid extends AbstractGameGrid{
         }
     }
 
-    public void placeShip(AbstractBattleShip ship){
+    public void placeShip(AbstractBattleShip ship){//place ships on grid
         //Updated gameGrid "*"
-        int Rand = new Random().nextInt(gameGrid[0].length-2);// vertical
+        //-2 is needed so inside grid range
+        int Rand = new Random().nextInt(gameGrid[0].length-2);// vertical 
         int Rand2 = new Random().nextInt(gameGrid[0].length);//vertical
         int Rand3 = new Random().nextInt(gameGrid[0].length-2);// horizontal
         int Rand4 = new Random().nextInt(gameGrid[0].length);// horizontal
         int counter = 0;
         int[][] tempArray = new int[4][2];
         while(counter < 3){
-            if (ship.shipOrientation == "vertical"){
+            if (ship.shipOrientation == "vertical"){ // if vertical
 
                 int value1 = Rand + counter;
 
@@ -43,7 +44,7 @@ public class GameGrid extends AbstractGameGrid{
                 
                 
             }
-            else if (ship.shipOrientation == "horizontal"){
+            else if (ship.shipOrientation == "horizontal"){// if horizontal
 
                 int value2 = Rand3 + counter;
                 
@@ -54,11 +55,11 @@ public class GameGrid extends AbstractGameGrid{
             }
             counter++;
         } 
-        ship.setShipCoordinates(tempArray);
+        ship.setShipCoordinates(tempArray);//sets the shipCoordinates for each '*'
             
     }
 
-    public void generateShips(int numberOfShips){
+    public void generateShips(int numberOfShips){//creates ships = numberOfShips and give appropiate names
         //this.ships = new AbstractBattleShip[numberOfShips];
         // 0,1,2,3
         for(int i=0; i < numberOfShips ;i++){

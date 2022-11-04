@@ -14,7 +14,7 @@ public class OpponentGameGrid extends GameGrid {
             for(int j=0; j<gameGrid[i].length;j++){
                 String position = gameGrid[i][j];
                 if (position == "*"){
-                    System.out.print("." + " "); // hides *
+                    System.out.print("." + " "); // hides * ship
                 } else{
                     System.out.print(gameGrid[i][j] + " ");
                 }
